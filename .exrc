@@ -7,11 +7,20 @@ map <leader>h <C-w>h
 map <leader>l <C-w>l
 map <leader>j <C-w>j
 map <leader>k <C-w>k
+inoremap {     {}<left>
+inoremap {<cr> {<cr>}<esc>O
+inoremap {}    {}
+inoremap [     []<left>
+inoremap []    []<left>
+inoremap "     ""<left>
+inoremap ""    ""
+inoremap (     ()<left>
+inoremap ()    ()
 autocmd filetype cpp nnoremap <leader>b :w <bar> !g++ -ulimit -Wall -Wno-unused-result -std=c++11   -O2   % -o %:r && ./%:r < ./input.txt <cr>
 autocmd filetype cpp nnoremap <leader>v :w <bar> !g++ -ulimit -Wall -Wno-unused-result -std=c++11   -O2   % -o %:r && ./%:r <cr>
 
 syntax on
-set nu
+set nu nornu
 set clipboard=unnamedplus
 set mouse=a
 set tabstop=2
