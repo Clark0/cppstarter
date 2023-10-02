@@ -1,13 +1,13 @@
-CXX = /usr/local/bin/g++-12
-CXXFLAGS = -g -std=c++17 -O2
+CXX = /usr/bin/g++
+CXXFLAGS = -g -std=c++17 -O2 # -fsanitize=address
 TARGET := main
 
 .PHONY: all run clean
 all: clean $(TARGET) run
 
-bits/stdc++.h:
-	mkdir -p bits
-	wget 'https://raw.githubusercontent.com/tekfyl/bits-stdc-.h-for-mac/master/stdc%2B%2B.h' -O bits/stdc++.h
+# bits/stdc++.h:
+# 	mkdir -p bits
+# 	wget 'https://raw.githubusercontent.com/tekfyl/bits-stdc-.h-for-mac/master/stdc%2B%2B.h' -O bits/stdc++.h
 
 # $(TARGET): $(wildcard *.cpp) bits/stdc++.h
 # 	$(CXX) $(CXXFLAGS) bits/stdc++.h $< -o $@
