@@ -1,5 +1,5 @@
-CXX = /usr/bin/g++
-CXXFLAGS = -g -std=c++17 -O2 # -fsanitize=address
+CXX = clang++
+CXXFLAGS = -g -std=c++17 -O2 -fsanitize=address
 TARGET := main
 
 .PHONY: all run clean
