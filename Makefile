@@ -1,24 +1,19 @@
-CXX = clang++
-CXXFLAGS = -g -std=c++17 -O2 -fsanitize=address
-TARGET := main
+BUILD_DIR := build
 
-.PHONY: all run clean
-all: clean $(TARGET) run
+# Default target
+all: clean configure build run
 
-# bits/stdc++.h:
-# 	mkdir -p bits
-# 	wget 'https://raw.githubusercontent.com/tekfyl/bits-stdc-.h-for-mac/master/stdc%2B%2B.h' -O bits/stdc++.h
+configure:
+	cmake -DCMAKE_BUILD_TYPE=DEBUG -B $(BUILD_DIR)
 
-# $(TARGET): $(wildcard *.cpp) bits/stdc++.h
-# 	$(CXX) $(CXXFLAGS) bits/stdc++.h $< -o $@
-$(TARGET): $(wildcard *.cpp)
-	$(CXX) $(CXXFLAGS) $< -o $@
+build:
+	cmake --build $(BUILD_DIR)
 
-in := input.txt
-out := output.txt
+run: build
+	 MallocNanoZone=0 ./$(BUILD_DIR)/main < input.txt
 
-run:
-	./$(TARGET) < $(in)
-
+# Clean build artifacts
 clean:
-	rm -f $(TARGET)
+	@rm -rf $(BUILD_DIR)
+
+.PHONY: all configure build run clean

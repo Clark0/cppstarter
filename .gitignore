@@ -3,3 +3,5 @@ main.cpp
 input.txt
 output.txt
 main.dSYM
+.cache
+build
